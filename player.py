@@ -39,8 +39,7 @@ class MusicBrowser(App):
         yield Header(show_clock=True)
 
         self.tracks = self.load_tracks()
-
-        # Buat ListView kosong
+        
         self.list_view = ListView()
         yield self.list_view
 
