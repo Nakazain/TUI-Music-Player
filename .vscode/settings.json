@@ -1,0 +1,4 @@
+{
+  "python.languageServer": "Pyright",
+  "python.analysis.typeCheckingMode": "basic"
+}
