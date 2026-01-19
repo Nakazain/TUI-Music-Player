@@ -26,11 +26,10 @@ class MusicBrowser(App):
         if not os.path.exists(MUSIC_DIR):
             return tracks
 
-        for filename in os.listdir(MUSIC_DIR):
-            filename = filename.lower()
-
-            if filename.endswith(SUPPORTED_EXTENSIONS):
-                tracks.append(filename)
+        for dirpath, dirnames, filenames in os.walk(MUSIC_DIR):
+            for filenames in os.listdir(dirpath):
+                if filenames.endswith(SUPPORTED_EXTENSIONS):
+                    tracks.append(filenames)
 
         tracks.sort()
         return tracks
@@ -39,7 +38,7 @@ class MusicBrowser(App):
         yield Header(show_clock=True)
 
         self.tracks = self.load_tracks()
-        
+
         self.list_view = ListView()
         yield self.list_view
 
